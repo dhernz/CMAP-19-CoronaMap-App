@@ -1,25 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HTTP } from '@ionic-native/http/ngx';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   apiUrl = 'http://127.0.0.1:3000'
-  constructor(private http: HTTP) { }
+  constructor(private http: HttpClient) { }
 
   register(userData){
-    this.http.post(this.apiUrl,userData,{})
-    .then(data => {
-      console.log(data.status);
-      console.log(data.data); // data received by server
-      console.log(data.headers);
-    })
-    .catch(error => {
-      console.log(error)
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
+    this.http.post(this.apiUrl+'/user',userData).subscribe((response) => {
+        console.log(response);
     });
   }
 
