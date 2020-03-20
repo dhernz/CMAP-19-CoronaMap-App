@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,43 @@ export class ApiService {
   apiUrl = 'http://127.0.0.1:3000'
   constructor(private http: HttpClient) { }
 
+  jsonToParams(json): HttpParams{
+    let httpParams = new HttpParams()
+    Object.keys(json).forEach(key=>{
+      httpParams = httpParams.set(key,json[key])
+    });
+    return httpParams
+  }
+
   register(userData){
     return new Promise((resolve,reject)=>{
-      this.http.post(this.apiUrl+'/user',userData).subscribe((response:any) => {
+      console.log(this.jsonToParams(userData))
+      this.http.post(this.apiUrl+'/user',this.jsonToParams(userData)).subscribe((response:any) => {
           console.log(response);
+          if(response.error){
+            reject(response.error)
+          }else{
+            resolve(response)
+          }
+      });
+    })
+  }
+
+  setReport(reportData){
+    return new Promise((resolve,reject)=>{
+      this.http.post(this.apiUrl+'/report',this.jsonToParams(reportData),{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+          if(response.error){
+            reject(response.error)
+          }else{
+            resolve(response)
+          }
+      });
+    })
+  }
+
+  getAllStatus(){
+    return new Promise((resolve,reject)=>{
+      this.http.get(this.apiUrl+'/status',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
           if(response.error){
             reject(response.error)
           }else{

@@ -18,7 +18,7 @@
     <div class="subtitle">
         <h5><b>Cuentanos como has estado</b></h5>
     </div>
-    <ion-item  button (click)="testClick()">
+    <ion-item  button (click)="setStatus('fine','/map')">
         <ion-avatar slot="start">
           <img src="assets/images/fine_user.png">
         </ion-avatar>
@@ -31,7 +31,7 @@
             </ion-text>
         </ion-label>
     </ion-item>
-    <ion-item  routerLink="/symptoms" routerDirection="forward">
+    <ion-item button (click)="setStatus('symptoms','/symptoms')">
         <ion-avatar slot="start">
           <img src="assets/images/fine_user.png">
         </ion-avatar>
@@ -44,7 +44,7 @@
             </ion-text>
         </ion-label>
     </ion-item>
-    <ion-item  button (click)="testClick()">
+    <ion-item  button (click)="setStatus('infected','/map')">
         <ion-avatar slot="start">
           <img src="assets/images/fine_user.png">
         </ion-avatar>
@@ -57,7 +57,7 @@
             </ion-text>
         </ion-label>
     </ion-item>
-    <ion-item  button (click)="testClick()">
+    <ion-item  button (click)="setStatus('recovered','/map')">
         <ion-avatar slot="start">
           <img src="assets/images/fine_user.png">
         </ion-avatar>
