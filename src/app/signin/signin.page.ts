@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Device } from '@ionic-native/device/ngx';
 import { CommonService } from '../services/common.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.page.html',
@@ -12,7 +13,8 @@ export class SigninPage implements OnInit {
   constructor(
     private apiService: ApiService,
     private device: Device,
-    private common: CommonService
+    private common: CommonService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class SigninPage implements OnInit {
     this.common.presentLoading()
     this.apiService.register(data).then((data:any)=>{
       localStorage.setItem("token",data.token)
+      this.router.navigate(['/user-status'])
       this.common.hideLoading()
     }).catch(err=>{
       console.log(err)

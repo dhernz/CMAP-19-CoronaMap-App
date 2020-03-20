@@ -1,5 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button color="primary"></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/map" routerDirection="forward">
+                <ion-icon slot="icon-only" name="map-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            <ion-img style="height: 40px;" src="assets/icon/LOGO_.svg"></ion-img>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+  
 <ion-content>
-    <h5><b>Cuentanos como has estado</b></h5>
+    <div class="subtitle">
+        <h5><b>Cuentanos como has estado</b></h5>
+    </div>
     <ion-item  button (click)="testClick()">
         <ion-avatar slot="start">
           <img src="assets/images/fine_user.png">
