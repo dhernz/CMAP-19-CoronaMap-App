@@ -5,7 +5,7 @@ import { HTTP } from '@ionic-native/http/ngx';
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl = '127.0.0.1'
+  apiUrl = 'http://127.0.0.1:3000'
   constructor(private http: HTTP) { }
 
   register(userData){
@@ -16,6 +16,7 @@ export class ApiService {
       console.log(data.headers);
     })
     .catch(error => {
+      console.log(error)
       console.log(error.status);
       console.log(error.error); // error message as string
       console.log(error.headers);
