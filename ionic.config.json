@@ -1,5 +1,7 @@
 {
   "name": "covidReporting",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

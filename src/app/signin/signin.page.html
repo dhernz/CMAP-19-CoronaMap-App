@@ -1,0 +1,90 @@
+<ion-content>
+  <form>
+
+    <ion-list lines="full" class="ion-no-margin ion-padding line-input">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked"><h2><b>Nombre completo y apellido</b></h2></ion-label>
+            <ion-label position="stacked" color="medium"><h3>(como aparece en su identidad)</h3></ion-label>
+            <ion-item [class]="validateName()">
+              <ion-input type="text" [(ngModel)]="userData.name" name="name"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked"><h2><b>Numero de identidad</b></h2></ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item class="ion-no-margin">
+              <ion-input type="number" [(ngModel)]="userData.identityOne" name="identityOne"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input type="number" [(ngModel)]="userData.identityTwo" name="identityTwo"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input type="number" [(ngModel)]="userData.identityThree" name="identityThree"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked"><h2><b>Genero con el que se identifica</b></h2></ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-radio-group value="male" type="number" [(ngModel)]="userData.gender" name="gender">
+          <ion-row>          
+            <ion-col>
+              <ion-item>
+                <ion-label>Masculino</ion-label>
+                <ion-radio slot="start" value="male"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Femenino</ion-label>
+                <ion-radio slot="start" value="female"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked"><h2><b>Numero de celular</b></h2></ion-label>
+            <ion-item>
+              <ion-input type="tel" [(ngModel)]="userData.phone" name="phone"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked"><h2><b>Fecha de nacimiento</b></h2></ion-label>
+            <ion-item>
+              <ion-datetime [(ngModel)]="userData.birthDate" name="birthDate" value="2000-01-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked"><h2><b>¿Donde estas actualmente?</b></h2></ion-label>
+            <ion-item>
+              <ion-input [(ngModel)]="userData.address" name="address"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+  </form>
+</ion-content>
+<ion-footer>
+  <div class="ion-padding">
+    <ion-button expand="block" [disabled]="validForm()" size="medium" type="button" (click)="processForm()" class="ion-no-margin">REGISTRARSE</ion-button>
+  </div>
+</ion-footer>
