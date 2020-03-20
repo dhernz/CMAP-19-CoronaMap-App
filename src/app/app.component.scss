@@ -1,0 +1,79 @@
+.menu-container{
+    padding-left: 30px;
+    .user-info{
+        display: flex;
+        flex-direction: column;
+        .user-name{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: -0.564px;
+            color: #010101;
+        }
+        .user-identity{
+            font-style: normal;
+            font-weight: 300;
+            font-size: 10px;
+            line-height: 12px;
+            letter-spacing: -0.47px;
+            margin-top: 3px;
+            color: #000000;
+        }
+        .user-status{
+            background: #FFFFFF;
+            border: 1px solid #00B1FA;
+            box-sizing: border-box;
+            border-radius: 8px;
+            text-align: center;
+            width: 84px;
+            margin-top: 10px;
+            .user-status-text{
+                margin: 5px;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 10px;
+                line-height: 12px;
+                letter-spacing: -0.47px;
+                color: #00B1FA;
+            }
+        }
+        .user-status.green{
+            border: 1px solid #30DFA0;
+            .user-status-text{
+                color: #30DFA0;
+            }
+        }
+        .user-status.blue{
+            border: 1px solid #00B1FA;
+            .user-status-text{
+                color: #00B1FA;
+            }
+        }
+        .user-status.yellow{
+            border: 1px solid #FA9600;
+            .user-status-text{
+                color: #FA9600;
+            }
+        }
+        .user-status.red{
+            border: 1px solid #DF3030;
+            .user-status-text{
+                color: #DF3030;
+            }
+        }
+    }
+    .menu-list{
+        margin-top: 50px;
+        .menu-item{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: -0.564px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            color: #010101;
+        }
+    }
+}

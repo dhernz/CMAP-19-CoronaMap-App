@@ -36,8 +36,17 @@ export class SigninPage implements OnInit {
     this.common.presentLoading()
     this.apiService.register(data).then((data:any)=>{
       localStorage.setItem("token",data.token)
-      this.router.navigate(['/user-status'])
-      this.common.hideLoading()
+      localStorage.setItem("name",data.name);
+      localStorage.setItem("identity",data.identity);
+      
+      this.apiService.getCurrentReport().then((success:any)=>{
+        localStorage.setItem("statusId",success.status_id)
+        this.router.navigate(['/user-status'])
+        this.common.hideLoading()
+      }).catch(err=>{
+        this.router.navigate(['/user-status'])
+        this.common.hideLoading()
+      });
     }).catch(err=>{
       console.log(err)
       this.common.hideLoading()

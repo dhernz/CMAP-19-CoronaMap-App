@@ -6,7 +6,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class ApiService {
   apiUrl = 'http://127.0.0.1:3000'
-  constructor(private http: HttpClient) { }
+  statusAll = []
+  statusObject = {}
+  constructor(private http: HttpClient) {
+    this.getAllStatus();
+  }
 
   jsonToParams(json): HttpParams{
     let httpParams = new HttpParams()
@@ -48,10 +52,39 @@ export class ApiService {
           if(response.error){
             reject(response.error)
           }else{
+            this.statusAll = response
+            this.statusAll.forEach(status=>{
+              this.statusObject[status.id] = status
+            })
+            console.log(response)
             resolve(response)
           }
       });
     })
+  }
+
+  getCurrentReport(){
+    return new Promise((resolve,reject)=>{
+      this.http.get(this.apiUrl+'/report',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+          if(response.error){
+            reject(response.error)
+          }else{
+            resolve(response)
+          }
+      });
+    })
+  }
+
+  getReportsByLatLng(latitude,longitude){
+    return new Promise((resolve,reject)=>{
+      this.http.get(this.apiUrl+'/report/'+latitude+"/"+longitude,{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+        if(response.error){
+          reject(response.error)
+        }else{
+          resolve(response)
+        }
+      });
+    });
   }
 
 }

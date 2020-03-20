@@ -21,12 +21,16 @@ export class UserStatusPage implements OnInit {
     private apiService: ApiService) { }
 
   ngOnInit() {
-    this.common.presentLoading()
-    this.apiService.getAllStatus().then((response:Array<any>)=>{
-      this.statusAll = response
-      this.common.hideLoading()
-      console.log(this.statusAll);
-    })
+    if(this.apiService.statusAll.length == 0){
+      this.common.presentLoading()
+      this.apiService.getAllStatus().then((response:Array<any>)=>{
+        this.statusAll = response
+        this.common.hideLoading()
+        console.log(this.statusAll);
+      })
+    }else{
+      this.statusAll = this.apiService.statusAll
+    }
   }
 
   setStatus(statusCode, nextPage){
@@ -40,6 +44,7 @@ export class UserStatusPage implements OnInit {
       }
       this.apiService.setReport(reportData).then(success=>{
         console.log(success)
+        localStorage.setItem("statusId",statusObj.id)
         this.common.hideLoading()
         this.router.navigate([nextPage])
       }).catch(error=>{
@@ -54,7 +59,7 @@ export class UserStatusPage implements OnInit {
   }
 
   ionViewDidEnter(){
-    this.menu.enable(true,"first")
+    this.menu.enable(false,"first")
   }
 
 }

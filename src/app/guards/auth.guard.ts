@@ -15,7 +15,11 @@ export class AuthGuard implements CanActivate {
     console.log(next.url[0].path)
     if(next.url[0].path == "signin"){
       if (localStorage.getItem("token") != null && localStorage.getItem("token") != "") {
-        this.router.navigate(['/user-status']);
+        if(localStorage.getItem("statusId") != null){
+          this.router.navigate(['/map']);
+        }else{
+          this.router.navigate(['/user-status']);
+        }
       } else {
         return true;
       }

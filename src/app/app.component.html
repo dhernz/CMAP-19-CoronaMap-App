@@ -2,28 +2,32 @@
   <ion-menu side="start" menuId="first" contentId="main">
     <ion-content>
       <ion-img style="height: 40px;margin: 40px;" src="assets/icon/LOGO_.svg"></ion-img>
-      <ion-list>
-        <ion-item>
-          <ion-icon name="reader" slot="start"></ion-icon>
-          <ion-label>Reportar</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="person" slot="start"></ion-icon>
-          <ion-label>Con quien has estado</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="flag" slot="start"></ion-icon>
-          <ion-label>Recomendaciones</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="radio" slot="start"></ion-icon>
-          <ion-label>Comunicados</ion-label>
-        </ion-item>
-        <ion-item (click)="logout()">
-          <ion-icon name="lock-closed" slot="start"></ion-icon>
-          <ion-label>Cerrar sesion</ion-label>
-        </ion-item>
-      </ion-list>
+      <div class="menu-container">
+        <div class="user-info">
+          <div class="user-name">Jaime Fonseca</div>
+          <div class="user-identity">1503-1994-01063</div>
+          <div class="user-status {{getStatusColor()}}" button routerLink="/user-status"  (click)="menu.close('first')">
+            <div class="user-status-text">{{getStatusText()}}</div>
+          </div>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item" button routerLink="/user-status" (click)="menu.close('first')">
+            Reportar
+          </div>
+          <div class="menu-item">
+            Con quien has estado
+          </div>
+          <div class="menu-item">
+            Recomendaciones
+          </div>
+          <div class="menu-item">
+            Comunicados          </div>
+          <div class="menu-item" button (click)="logout()">
+            Cerrar sesion
+          </div>
+          
+        </div>
+      </div>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="main"></ion-router-outlet>
