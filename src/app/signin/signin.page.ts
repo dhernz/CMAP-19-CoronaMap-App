@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Device } from '@ionic-native/device/ngx';
+import { CommonService } from '../services/common.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.page.html',
@@ -10,7 +11,8 @@ export class SigninPage implements OnInit {
   userData: any = {}
   constructor(
     private apiService: ApiService,
-    private device: Device
+    private device: Device,
+    private common: CommonService
   ) { }
 
   ngOnInit() {
@@ -29,7 +31,14 @@ export class SigninPage implements OnInit {
       country_code: "+504",
       device_id: this.device.uuid || "device_id_here"
     }
-    this.apiService.register(data)
+    this.common.presentLoading()
+    this.apiService.register(data).then((data:any)=>{
+      localStorage.setItem("token",data.token)
+      this.common.hideLoading()
+    }).catch(err=>{
+      console.log(err)
+      this.common.hideLoading()
+    })
     console.log("Process form")
     console.log(data)
   }

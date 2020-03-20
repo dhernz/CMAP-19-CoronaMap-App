@@ -9,9 +9,16 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   register(userData){
-    this.http.post(this.apiUrl+'/user',userData).subscribe((response) => {
-        console.log(response);
-    });
+    return new Promise((resolve,reject)=>{
+      this.http.post(this.apiUrl+'/user',userData).subscribe((response:any) => {
+          console.log(response);
+          if(response.error){
+            reject(response.error)
+          }else{
+            resolve(response)
+          }
+      });
+    })
   }
 
 }
