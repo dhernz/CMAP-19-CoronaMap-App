@@ -1,3 +1,78 @@
+.status-element.blue{
+    border: 1px solid #90DFFC;
+    .text-element{
+        .title{
+            color:#00B1FA;
+        }
+    }
+}
+
+.status-element.yellow{
+    border: 1px solid #F5CA5B;
+    .text-element{
+        .title{
+            color:#FA9600;
+        }
+    }
+}
+
+.status-element.red{
+    border: 1px solid #FC9090;
+    .text-element{
+        .title{
+            color:#DF3030;
+        }
+    }
+}
+
+.status-element.green{
+    border: 1px solid #90FCE9;
+    .text-element{
+        .title{
+            color:#30DFA0;
+        }
+    }
+}
+
+.status-element{
+    border: 1px solid #90DFFC;
+    box-sizing: border-box;
+    height: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    .image{
+        width: 71.06px;
+        height: 71.06px;
+    }
+    .text-element{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
+        .title{
+            font-style: normal;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 26px;
+            letter-spacing: -0.47px;
+            color: #00B1FA;
+        }
+        .subtitle{
+            margin-top: 5px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: -0.47px;
+            color: #333333;
+        }
+    }
+}
+
 ion-item{
     border: 1px solid #90DFFC;
     box-sizing: border-box;
@@ -8,7 +83,7 @@ ion-item{
 }
 
 .subtitle{
-    margin-left: 40px;
+    text-align: center;
 }
 
 ion-title {

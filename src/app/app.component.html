@@ -4,8 +4,8 @@
       <ion-img style="height: 40px;margin: 40px;" src="assets/icon/LOGO_.svg"></ion-img>
       <div class="menu-container">
         <div class="user-info">
-          <div class="user-name">Jaime Fonseca</div>
-          <div class="user-identity">1503-1994-01063</div>
+          <div class="user-name">{{getName()}}</div>
+          <div class="user-identity">{{getIdentity()}}</div>
           <div class="user-status {{getStatusColor()}}" button routerLink="/user-status"  (click)="menu.close('first')">
             <div class="user-status-text">{{getStatusText()}}</div>
           </div>

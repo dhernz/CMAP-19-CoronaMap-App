@@ -51,6 +51,14 @@ export class AppComponent {
     }
   }
 
+  getName(){
+    return localStorage.getItem("name") || "cargando.."
+  }
+
+  getIdentity(){
+    return localStorage.getItem("identity") || "cargando.."
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
