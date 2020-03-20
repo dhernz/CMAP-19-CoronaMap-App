@@ -1,0 +1,107 @@
+.element{
+    margin-left:40px;
+    margin-right:40px;
+    margin-top: 30px;
+    .label-element{
+        font-weight: bold;
+    }
+    .location{
+        margin-top: 7px;
+        display: flex;
+        .text{
+            text-decoration: underline;
+        }
+    }
+    .option-element{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .radio-list{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .radio-item{
+                margin-top: 10px;
+                border: 1px solid #828282;
+                box-sizing: border-box;
+                border-radius: 4px;
+                width: 100%;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+    .input-element{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        input{
+            height: 40px;
+            width: 100px;
+            border: 1px solid #828282;
+            box-sizing: border-box;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .input-right-label{
+            margin-left: 10px;
+        }
+    }
+    .input-element-default{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        input{
+            height: 40px;
+            width: 100%;
+            border: 1px solid #828282;
+            box-sizing: border-box;
+            border-radius: 4px;
+            padding-left: 15px;
+        }
+    }
+    .list-symptoms{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .symptom-item{
+            margin-top: 10px;
+            border: 1px solid #828282;
+            box-sizing: border-box;
+            border-radius: 4px;
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding:12px;
+            .label-symptom{
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.btn-continue{
+    margin:40px;
+    button{
+        height: 54px;
+        background: #F46036;
+        border-radius: 4px;
+        width: 100%;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 18px;
+        /* identical to box height */
+
+        text-align: center;
+        letter-spacing: -0.47px;
+        text-decoration: underline;
+        color: #FFFFFF;
+    }
+}

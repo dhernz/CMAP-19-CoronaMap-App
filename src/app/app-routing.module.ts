@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./map/map.module').then( m => m.MapPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'symptoms',
+    loadChildren: () => import('./symptoms/symptoms.module').then( m => m.SymptomsPageModule)
+  },
 ];
 
 @NgModule({

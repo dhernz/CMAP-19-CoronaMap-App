@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="margin-right: 48px;">
+      <ion-img style="height: 40px;" src="assets/icon/LOGO_.svg"></ion-img>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="element">
+    <div class="label-element">¿Que sintomas presentas?</div>
+    <div class="list-symptoms">
+      <div class="symptom-item">
+        <div class="check-symptom">
+          <ion-checkbox></ion-checkbox>
+        </div>
+        <div class="label-symptom">
+          Sintoma
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="element">
+    <div class="label-element">¿Hace cuanto comenzaste a sentirte asi?</div>
+    <div class="input-element">
+      <input type="number">
+      <div class="input-right-label">
+        Días
+      </div>
+    </div>
+  </div>
+  <div class="element">
+    <div class="label-element">¿Donde estas actualmente?</div>
+    <div class="input-element-default">
+      <input type="text" placeholder="Escribir direccion exacata">
+    </div>
+    <div class="location">
+      <div class="icon">
+        <ion-icon name="location-outline"></ion-icon>
+      </div>
+      <div class="text">
+        Usar mi ubicacion actual
+      </div>
+    </div>
+  </div>
+  <div class="element" style="margin-bottom: 20px;">
+    <div class="label-element">¿Con quien has estado?</div>
+    <div class="option-element">
+        <div class="radio-list">
+          <div class="radio-item">
+            <div class="radio-label">Familia</div>
+            <div class="radio-value">
+              <ion-checkbox></ion-checkbox>
+            </div>
+          </div>
+          <div class="radio-item">
+            <div class="radio-label">Amigos</div>
+            <div class="radio-value">
+              <ion-checkbox></ion-checkbox>
+            </div>
+          </div>
+          <div class="radio-item">
+            <div class="radio-label">Compañeros de trabajo</div>
+            <div class="radio-value">
+              <ion-checkbox></ion-checkbox>
+            </div>
+          </div>
+          <div class="radio-item">
+            <div class="radio-label">Vecinos</div>
+            <div class="radio-value">
+              <ion-checkbox></ion-checkbox>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="btn-continue">
+    <button>CONTINUAR</button>
+  </div>
+</ion-content>
