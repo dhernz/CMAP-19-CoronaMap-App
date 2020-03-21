@@ -1,90 +1,96 @@
-<ion-content>
-  <form>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+        <ion-img style="height: 40px;" src="assets/icon/LOGO_.svg"></ion-img>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-list lines="full" class="ion-no-margin ion-padding line-input">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label position="stacked"><h2><b>Nombre completo y apellido</b></h2></ion-label>
-            <ion-label position="stacked" color="medium"><h3>(como aparece en su identidad)</h3></ion-label>
-            <ion-item [class]="validateName()">
-              <ion-input type="text" [(ngModel)]="userData.name" name="name"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-label position="stacked"><h2><b>Numero de identidad</b></h2></ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item class="ion-no-margin">
-              <ion-input type="number" [(ngModel)]="userData.identityOne" name="identityOne"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-input type="number" [(ngModel)]="userData.identityTwo" name="identityTwo"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-input type="number" [(ngModel)]="userData.identityThree" name="identityThree"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-label position="stacked"><h2><b>Genero con el que se identifica</b></h2></ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-radio-group value="male" type="number" [(ngModel)]="userData.gender" name="gender">
-          <ion-row>          
-            <ion-col>
-              <ion-item>
-                <ion-label>Masculino</ion-label>
-                <ion-radio slot="start" value="male"></ion-radio>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label>Femenino</ion-label>
-                <ion-radio slot="start" value="female"></ion-radio>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-radio-group>
-        <ion-row>
-          <ion-col>
-            <ion-label position="stacked"><h2><b>Numero de celular</b></h2></ion-label>
-            <ion-item>
-              <ion-input type="tel" [(ngModel)]="userData.phone" name="phone"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-label position="stacked"><h2><b>Fecha de nacimiento</b></h2></ion-label>
-            <ion-item>
-              <ion-datetime [(ngModel)]="userData.birthDate" name="birthDate" value="2000-01-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-label position="stacked"><h2><b>¿Donde estas actualmente?</b></h2></ion-label>
-            <ion-item>
-              <ion-input [(ngModel)]="userData.address" name="address"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-list>
-  </form>
-</ion-content>
-<ion-footer>
-  <div class="ion-padding">
-    <ion-button expand="block" [disabled]="validForm()" size="medium" type="button" (click)="processForm()" class="ion-no-margin">REGISTRARSE</ion-button>
+<ion-content>
+  <div class="form-container">
+    <div class="label-top-text">
+      Al llenar la siguiente información estarás ayudando a profesionales 
+      que trabajan para controlar el COVID-19, 
+      y puedes llevar control de tu estado de salud y la de tu comunidad.
+    </div>
+    <div class="element">
+      <div class="title-element">
+        Nombre completo y apellido
+      </div>
+      <div class="subtitle-element">
+        (Como aparece en su número de identidad)
+      </div>
+      <div class="input-container">
+        <input type="text" [(ngModel)]="userData.name">
+      </div>
+    </div>
+    <div class="element">
+      <div class="title-element">
+        Número de identidad
+      </div>
+      <div class="input-container identity">
+        <input type="number" [(ngModel)]="userData.identityOne" placeholder="0101">
+        <input type="number" [(ngModel)]="userData.identityTwo" placeholder="1980">
+        <input type="number" [(ngModel)]="userData.identityThree" placeholder="12345">
+      </div>
+    </div>
+    <div class="element">
+      <div class="title-element">
+        Género con que se identifica
+      </div>
+      <div class="input-container">
+        <div class="option-list">
+          <div class="option-element">
+            <div class="option-input">
+              <input [(ngModel)]="userData.female" type="radio" id="female" name="gender" value="female">
+            </div>
+            <div class="option-text">
+              <label for="female">Femenino</label>
+            </div>
+          </div>
+          <div class="option-element">
+            <div class="option-input">
+              <input type="radio" [(ngModel)]="userData.male" id="male" name="gender" value="male">
+            </div>
+            <div class="option-text">
+              <label for="male">Masculino</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="element">
+      <div class="title-element">
+        Número de celular
+      </div>
+      <div class="input-container">
+        <input type="tel" [(ngModel)]="userData.phone" placeholder="Ej. 99009900">
+      </div>
+    </div>
+    <div class="element">
+      <div class="title-element">
+        Fecha de nacimiento
+      </div>
+      <div class="input-container">
+        <div class="date-container">
+          <ion-datetime [(ngModel)]="userData.birthDate" name="birthDate" value="2000-01-01T15:43:40.394Z" display-timezone="utc">
+            
+          </ion-datetime>
+        </div>
+      </div>
+    </div>
+    <div class="element">
+      <div class="title-element">
+        ¿Donde estas actualmente?
+      </div>
+      <div class="input-container">
+        <input type="text" [(ngModel)]="userData.address" placeholder="Ej. Colonia casa calle">
+      </div>
+    </div>
+    <div class="btn-container" (click)="processForm()">
+      <div class="btn">
+        REGISTRARSE
+      </div>
+    </div>
   </div>
-</ion-footer>
+</ion-content>
