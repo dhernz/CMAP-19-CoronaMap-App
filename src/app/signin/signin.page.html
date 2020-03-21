@@ -13,18 +13,18 @@
       <div class="subtitle-element">
         (Como aparece en su número de identidad)
       </div>
-      <div class="input-container">
-        <input type="text" [(ngModel)]="userData.name">
+      <div class="input-container {{validName}}">
+        <input type="text" [(ngModel)]="userData.name" (input)="validateName()">
       </div>
     </div>
     <div class="element">
       <div class="title-element">
         Número de identidad
       </div>
-      <div class="input-container identity">
-        <input type="number" [(ngModel)]="userData.identityOne" placeholder="0101">
-        <input type="number" [(ngModel)]="userData.identityTwo" placeholder="1980">
-        <input type="number" [(ngModel)]="userData.identityThree" placeholder="12345">
+      <div class="input-container {{validIdentity}} identity">
+        <input type="text" maxlength="4" pattern="[0-9]*" [(ngModel)]="userData.identityOne" #identityOne placeholder="0101" (input)="validateIdentityOne()">
+        <input type="text" maxlength="4" pattern="[0-9]*"  [(ngModel)]="userData.identityTwo" #identityTwo placeholder="1980" (input)="validateIdentityTwo()">
+        <input type="text" maxlength="5" pattern="[0-9]*" [(ngModel)]="userData.identityThree" #identityThree placeholder="12345" (input)="validateIdentityThree()">
       </div>
     </div>
     <div class="element">
@@ -33,17 +33,17 @@
       </div>
       <div class="input-container">
         <div class="option-list">
-          <div class="option-element">
+          <div class="option-element" (click)="userData.gender = 'female'">
             <div class="option-input">
-              <input [(ngModel)]="userData.female" type="radio" id="female" name="gender" value="female">
+              <input checked="checked" type="radio" id="female" name="gender" value="female">
             </div>
             <div class="option-text">
               <label for="female">Femenino</label>
             </div>
           </div>
-          <div class="option-element">
+          <div class="option-element" (click)="userData.gender = 'male'">
             <div class="option-input">
-              <input type="radio" [(ngModel)]="userData.male" id="male" name="gender" value="male">
+              <input type="radio" id="male" name="gender" value="male">
             </div>
             <div class="option-text">
               <label for="male">Masculino</label>
@@ -56,8 +56,8 @@
       <div class="title-element">
         Número de celular
       </div>
-      <div class="input-container">
-        <input type="tel" [(ngModel)]="userData.phone" placeholder="Ej. 99009900">
+      <div class="input-container {{validPhone}}">
+        <input type="tel" maxlength="8" [(ngModel)]="userData.phone" (input)="validatePhone()" placeholder="Ej. 99009900">
       </div>
     </div>
     <div class="element">
@@ -76,11 +76,19 @@
       <div class="title-element">
         ¿Donde estas actualmente?
       </div>
-      <div class="input-container">
-        <input type="text" [(ngModel)]="userData.address" placeholder="Ej. Colonia casa calle">
+      <div class="input-container {{validAddress}}">
+        <input type="text" [(ngModel)]="userData.address" (input)="validateAddress()" placeholder="Ej. Colonia casa calle">
+      </div>
+      <div class="map-selection">
+        <div class="map-pin">
+          <ion-img src="assets/images/pin_map.svg"></ion-img>
+        </div>
+        <div class="text">
+          Indicar en el mapa
+        </div>
       </div>
     </div>
-    <div class="btn-container" (click)="processForm()">
+    <div class="btn-container {{btnEnabled()}}" (click)="processForm()">
       <div class="btn">
         REGISTRARSE
       </div>
