@@ -39,6 +39,7 @@ export class SigninPage implements OnInit {
   ngOnInit() {
     this.getCurrentAddress().then(address=>{
       this.userData.address = address
+      this.validAddress = 'valid'
     })
   }
 
