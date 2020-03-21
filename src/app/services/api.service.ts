@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl = 'http://127.0.0.1:3000'
+  apiUrl = 'http://3.136.19.166:3000'
   statusAll = []
   statusObject = {}
   constructor(private http: HttpClient) {

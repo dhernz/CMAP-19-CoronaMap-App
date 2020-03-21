@@ -9,8 +9,7 @@ export class CommonService {
 
   async presentLoading() {
     this.loading = await this.loadingController.create({
-      message: 'Please wait...',
-      duration: 2000,
+      message: 'Espere porfavor...',
     });
     await this.loading.present();
   }
