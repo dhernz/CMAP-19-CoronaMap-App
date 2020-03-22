@@ -147,6 +147,7 @@ export class SigninPage implements OnInit {
   
         this.apiService.getCurrentReport().then((success:any)=>{
           localStorage.setItem("statusId",success.status_id)
+          localStorage.setItem("reportId", success.id)
           this.router.navigate(['/user-status'])
           this.common.hideLoading()
         }).catch(err=>{

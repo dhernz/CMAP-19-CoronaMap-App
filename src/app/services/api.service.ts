@@ -8,8 +8,10 @@ export class ApiService {
   apiUrl = 'http://3.136.19.166:3000'
   statusAll = []
   statusObject = {}
+  symptoms = []
   constructor(private http: HttpClient) {
     this.getAllStatus();
+    this.getAllSymptoms();
   }
 
   jsonToParams(json): HttpParams{
@@ -46,6 +48,32 @@ export class ApiService {
     })
   }
 
+  updateReport(reportData){
+    return new Promise((resolve,reject)=>{
+      this.http.post(this.apiUrl+'/updateReport',this.jsonToParams(reportData),{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {  
+        console.log(response)
+        if(response.error){
+          reject(response.error)
+        }else{
+          resolve(response)
+        }
+      });
+    })
+  }
+
+  addSymptoms(symptomId){
+    return new Promise((resolve,reject)=>{
+      this.http.post(this.apiUrl+'/user/symptom',this.jsonToParams({symptom_id:symptomId}),{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+        console.log("ADDSYMPROM RESPONSE ",response)  
+        if(response.error){
+          reject(response.error)
+        }else{
+          resolve(response)
+        }
+      });
+    })
+  }
+
   getAllStatus(){
     return new Promise((resolve,reject)=>{
       this.http.get(this.apiUrl+'/status',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
@@ -57,6 +85,20 @@ export class ApiService {
               this.statusObject[status.id] = status
             })
             console.log(response)
+            resolve(response)
+          }
+      });
+    })
+  }
+
+  getAllSymptoms(){
+    return new Promise((resolve,reject)=>{
+      this.http.get(this.apiUrl+'/symptoms',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+          if(response.error){
+            reject(response.error)
+          }else{
+            this.symptoms = response
+            console.log(this.symptoms)
             resolve(response)
           }
       });

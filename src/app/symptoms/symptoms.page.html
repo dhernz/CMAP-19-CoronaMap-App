@@ -13,12 +13,12 @@
   <div class="element">
     <div class="label-element">¿Que sintomas presentas?</div>
     <div class="list-symptoms">
-      <div class="symptom-item">
+      <div class="symptom-item" *ngFor="let symptom of apiService.symptoms">
         <div class="check-symptom">
-          <ion-checkbox></ion-checkbox>
+          <ion-checkbox [(ngModel)]="symptom.isChecked"></ion-checkbox>
         </div>
-        <div class="label-symptom">
-          Sintoma
+        <div class="label-symptom" (click)="symptom.isChecked = !symptom.isChecked">
+          {{symptom.name}}
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
   <div class="element">
     <div class="label-element">¿Hace cuanto comenzaste a sentirte asi?</div>
     <div class="input-element">
-      <input type="number">
+      <input type="number" [(ngModel)]="sick_days">
       <div class="input-right-label">
         Días
       </div>
@@ -35,9 +35,9 @@
   <div class="element">
     <div class="label-element">¿Donde estas actualmente?</div>
     <div class="input-element-default">
-      <input type="text" placeholder="Escribir direccion exacata">
+      <input type="text" placeholder="Escribir direccion exacata" [(ngModel)]="address">
     </div>
-    <div class="location">
+    <div class="location" (click)="useCurrentLocation()">
       <div class="icon">
         <ion-icon name="location-outline"></ion-icon>
       </div>
@@ -50,34 +50,16 @@
     <div class="label-element">¿Con quien has estado?</div>
     <div class="option-element">
         <div class="radio-list">
-          <div class="radio-item">
-            <div class="radio-label">Familia</div>
+          <div class="radio-item" *ngFor="let who of who_been_list">
+            <div class="radio-label" (click)="who.isChecked = !who.isChecked">{{who.name}}</div>
             <div class="radio-value">
-              <ion-checkbox></ion-checkbox>
+              <ion-checkbox [(ngModel)]="who.isChecked"></ion-checkbox>
             </div>
-          </div>
-          <div class="radio-item">
-            <div class="radio-label">Amigos</div>
-            <div class="radio-value">
-              <ion-checkbox></ion-checkbox>
-            </div>
-          </div>
-          <div class="radio-item">
-            <div class="radio-label">Compañeros de trabajo</div>
-            <div class="radio-value">
-              <ion-checkbox></ion-checkbox>
-            </div>
-          </div>
-          <div class="radio-item">
-            <div class="radio-label">Vecinos</div>
-            <div class="radio-value">
-              <ion-checkbox></ion-checkbox>
-            </div>
-          </div>
+          </div>          
         </div>
     </div>
   </div>
-  <div class="btn-continue">
+  <div class="btn-continue" (click)="save()">
     <button>CONTINUAR</button>
   </div>
 </ion-content>

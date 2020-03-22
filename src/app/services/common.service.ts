@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
   loading:any
-  constructor(public loadingController: LoadingController) { }
+  toast: any
+  constructor(public loadingController: LoadingController,
+    public toastController: ToastController) { }
 
   async presentLoading() {
     this.loading = await this.loadingController.create({
@@ -15,7 +17,18 @@ export class CommonService {
   }
 
   async hideLoading(){
-    this.loading.dismiss()
+      this.loading.dismiss()
+  }
+
+  async presentToast(message) {
+    if(this.toast) this.toast.dismiss()
+    this.toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: "danger",
+      position: "middle"
+    });
+    this.toast.present();
   }
 
 }

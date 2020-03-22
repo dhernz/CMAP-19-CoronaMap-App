@@ -76,11 +76,18 @@
             border-radius: 4px;
             width: 45%;
             display: flex;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
             padding:12px;
             .label-symptom{
                 margin-left: 10px;
+                font-family: Rubik;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 14px;
+
+                color: #000000;
             }
         }
     }
