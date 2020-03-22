@@ -94,6 +94,10 @@ export class SymptomsPage implements OnInit {
       this.common.presentToast("Seleccione al menos un sintoma")
       return false
     }
+    if(this.address == ""){
+      this.common.presentToast("Por favor ingrese una direccion")
+      return false
+    }
     this.who_been_list.forEach(w=>{
       if(w.isChecked) {
         if(this.who_been != "") this.who_been += ","
