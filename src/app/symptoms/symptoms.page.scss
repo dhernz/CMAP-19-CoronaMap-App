@@ -96,19 +96,19 @@
 .btn-continue{
     margin:40px;
     button{
-        height: 54px;
-        background: #F46036;
-        border-radius: 4px;
+        background: #00B1FA;
+        border-radius: 30px;
+        height: 38px;
         width: 100%;
+        font-family: Rubik;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 500;
         font-size: 15px;
         line-height: 18px;
         /* identical to box height */
 
         text-align: center;
         letter-spacing: -0.47px;
-        text-decoration: underline;
         color: #FFFFFF;
     }
 }

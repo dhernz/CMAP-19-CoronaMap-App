@@ -49,6 +49,7 @@ export class UserStatusPage implements OnInit {
         this.router.navigate([nextPage])
       }).catch(error=>{
         console.log('error setting report', error)
+        this.common.presentToast(error)
         this.common.hideLoading()
       })
     }).catch((error) => {
