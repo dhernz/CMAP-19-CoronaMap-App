@@ -143,7 +143,7 @@ export class SigninPage implements OnInit {
       this.apiService.register(data).then((data:any)=>{
         localStorage.setItem("token",data.token)
         localStorage.setItem("name",this.userData.name);
-        localStorage.setItem("identity",this.userData.identity);
+        localStorage.setItem("identity",this.userData.identityOne.toString() + "-" + this.userData.identityTwo.toString()+ "-" + this.userData.identityThree.toString());
   
         this.apiService.getCurrentReport().then((success:any)=>{
           localStorage.setItem("statusId",success.status_id)
