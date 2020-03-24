@@ -70,7 +70,9 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-device": {},
-      "cordova-plugin-advanced-http": {},
+      "cordova-plugin-advanced-http": {
+        "OKHTTP_VERSION": "3.10.0"
+      },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-splashscreen": {},
