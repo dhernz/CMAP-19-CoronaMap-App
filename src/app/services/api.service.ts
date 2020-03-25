@@ -98,7 +98,6 @@ export class ApiService {
             reject(response.error)
           }else{
             this.symptoms = response
-            console.log(this.symptoms)
             resolve(response)
           }
       });
