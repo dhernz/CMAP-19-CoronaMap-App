@@ -33,7 +33,8 @@ export class UserStatusPage implements OnInit {
     }
   }
 
-  setStatus(statusCode, nextPage){
+
+  updateStatus(statusCode,nextPage){
     this.common.presentLoading()
     let statusObj = this.statusAll.find(({ code }) => code === statusCode)
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -56,6 +57,24 @@ export class UserStatusPage implements OnInit {
       console.log('Error getting location', error);
       this.common.hideLoading()
     });
+    
+  }
+
+  setStatus(statusCode, nextPage){
+    if(statusCode == "infected"){
+      this.common.presentAlertConfirm("Estoy infectado","¿Ya te hicieron la prueba?","Si",()=>{
+        let statusObj = this.statusAll.find(({ code }) => code === "symptoms")
+        if(localStorage.getItem("statusId") == statusObj.id ){
+          this.updateStatus(statusCode,nextPage)
+        }else{
+          this.updateStatus(statusCode,"/symptoms")
+        }
+      },"No",()=>{
+        this.updateStatus("symptoms","/symptoms")
+      })
+    }else{
+      this.updateStatus(statusCode,nextPage)
+    }
     
   }
 
