@@ -61,21 +61,26 @@ export class UserStatusPage implements OnInit {
   }
 
   setStatus(statusCode, nextPage){
-    if(statusCode == "infected"){
-      this.common.presentAlertConfirm("Estoy infectado","¿Ya te hicieron la prueba?","Si",()=>{
-        let statusObj = this.statusAll.find(({ code }) => code === "symptoms")
-        if(localStorage.getItem("statusId") == statusObj.id ){
-          this.updateStatus(statusCode,nextPage)
-        }else{
-          this.updateStatus(statusCode,"/symptoms")
-        }
-      },"No",()=>{
-        this.updateStatus("symptoms","/symptoms")
-      })
-    }else{
-      this.updateStatus(statusCode,nextPage)
+    switch (statusCode) {
+      case "infected":
+        this.common.presentAlertConfirm("Estoy infectado","¿Ya te hicieron la prueba?","Si",()=>{
+          let statusObj = this.statusAll.find(({ code }) => code === "symptoms")
+          if(localStorage.getItem("statusId") == statusObj.id ){
+            this.updateStatus(statusCode,nextPage)
+          }else{
+            this.updateStatus(statusCode,"/symptoms")
+          }
+        },"No",()=>{
+          this.updateStatus("symptoms","/symptoms")
+        })
+        break;
+      case "recovered":
+        this.common.presentToast("Solo el administrador asignar este estado.")
+        break;
+      default:
+        this.updateStatus(statusCode,nextPage)
+        break;
     }
-    
   }
 
   ionViewDidEnter(){
