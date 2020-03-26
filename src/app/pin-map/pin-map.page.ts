@@ -13,7 +13,7 @@ export class PinMapPage implements OnInit {
   fetching = false;
   address = ""
   constructor(private geolocation: Geolocation,
-    private apiService: ApiService) { }
+    public apiService: ApiService) { }
 
   ngOnInit() {
     this.apiService.addressSignup = "Cargando dirección..."

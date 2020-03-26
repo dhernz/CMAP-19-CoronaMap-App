@@ -27,7 +27,7 @@ export class SigninPage implements OnInit {
   validAddress = ''
   latitude = 0.0
   longitude = 0.0
-  GoogleAutocomplete: google.maps.places.AutocompleteService;
+  GoogleAutocomplete: any;
   autocomplete: { input: string; };
   autocompleteItems: any[];
   location: any;
@@ -171,8 +171,9 @@ export class SigninPage implements OnInit {
         identity: this.userData.identityOne.toString() + "-" + this.userData.identityTwo.toString()+ "-" + this.userData.identityThree.toString(),
         mac_address: "asd",
         country_code: "+504",
-        device_id: this.device.uuid || "device_id_here"
+        device_id: this.device.uuid || Date.now()
       }
+      data.address = this.apiService.addressSignup
       this.common.presentLoading()
       this.apiService.register(data).then((data:any)=>{
         localStorage.setItem("token",data.token)
