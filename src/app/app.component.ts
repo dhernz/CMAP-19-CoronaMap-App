@@ -16,7 +16,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private menu: MenuController,
+    public menu: MenuController,
     private apiService: ApiService,
     private router: Router
   ) {

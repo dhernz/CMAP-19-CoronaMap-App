@@ -77,13 +77,18 @@
         ¿Donde estas actualmente?
       </div>
       <div class="input-container {{validAddress}}">
-        <input type="text" [(ngModel)]="userData.address" (input)="validateAddress()" placeholder="Ej. Colonia casa calle">
+        <input type="text" [(ngModel)]="apiService.addressSignup" (input)="validateAddress()" placeholder="Ej. Colonia casa calle">
+        <ion-list [hidden]="autocompleteItems.length == 0">
+          <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+            {{ item.description }}
+          </ion-item>
+        </ion-list>
       </div>
       <div class="map-selection">
         <div class="map-pin">
           <ion-img src="assets/images/pin_map.svg"></ion-img>
         </div>
-        <div class="text">
+        <div class="text" routerLink="/pin-map">
           Indicar en el mapa
         </div>
       </div>

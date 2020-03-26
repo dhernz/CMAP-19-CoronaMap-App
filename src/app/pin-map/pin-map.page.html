@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="margin-right: 48px;">
+        <ion-img style="height: 40px;" src="assets/icon/LOGO_.svg"></ion-img>
+    </ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map"></div>
+  <div class="pin-container">
+    <ion-img style="height: 40px;" src="assets/images/pin.svg"></ion-img>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="element">
+    <div class="title-element">
+      {{apiService.addressSignup}}
+    </div>
+
+  </div>
+</ion-footer>

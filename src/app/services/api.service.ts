@@ -4,11 +4,17 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+// root@ip-172-31-12-209:/etc/letsencrypt/live/server.coronamap19.org# ls
+// README  cert.pem  chain.pem  fullchain.pem  privkey.pem
+
+
 export class ApiService {
-  apiUrl = 'http://3.136.19.166:3000'
+  apiUrl = 'https://server.coronamap19.org'
   statusAll = []
   statusObject = {}
   symptoms = []
+  addressSignup = ""
   constructor(private http: HttpClient) {
     this.getAllStatus();
     this.getAllSymptoms();

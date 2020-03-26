@@ -43,7 +43,7 @@ export class SymptomsPage implements OnInit {
     private geolocation: Geolocation,
     private common: CommonService,
     private router: Router,
-    private apiService: ApiService) {
+    public apiService: ApiService) {
       this.apiService.getAllSymptoms()
     }
 

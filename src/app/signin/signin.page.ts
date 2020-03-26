@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Device } from '@ionic-native/device/ngx';
 import { CommonService } from '../services/common.service';
@@ -25,15 +25,26 @@ export class SigninPage implements OnInit {
   validPhone = ''
   validDate = ''
   validAddress = ''
+  latitude = 0.0
+  longitude = 0.0
+  GoogleAutocomplete: google.maps.places.AutocompleteService;
+  autocomplete: { input: string; };
+  autocompleteItems: any[];
+  location: any;
+  placeid: any;
 
   constructor(
-    private apiService: ApiService,
+    public apiService: ApiService,
     private device: Device,
     private geolocation: Geolocation,
     private menu: MenuController,
     private common: CommonService,
-    private router: Router
+    private router: Router,
+    private zone: NgZone
   ) { 
+    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.autocomplete = { input: '' };
+    this.autocompleteItems = [];
   }
 
   ngOnInit() {
@@ -43,9 +54,31 @@ export class SigninPage implements OnInit {
     })
   }
 
+  updateSearchResults(){
+    if (this.apiService.addressSignup == '') {
+      this.autocompleteItems = [];
+      return;
+    }
+    this.GoogleAutocomplete.getPlacePredictions({ radius:10000,input: this.apiService.addressSignup,location:new google.maps.LatLng(this.latitude, this.longitude) },
+    (predictions, status) => {
+      this.autocompleteItems = [];
+      this.zone.run(() => {
+        predictions.forEach((prediction) => {
+          this.autocompleteItems.push(prediction);
+        });
+      });
+    });
+  }
+  selectSearchResult(item) {
+    this.apiService.addressSignup = item.description
+    this.autocompleteItems = []
+  }
+
   getCurrentAddress(){
     return new Promise((resolve,reject)=>{
       this.geolocation.getCurrentPosition().then((resp) => {
+        this.latitude = resp.coords.latitude
+        this.longitude = resp.coords.longitude
         let geocoder = new google.maps.Geocoder;
         var latlng = {lat: resp.coords.latitude, lng: resp.coords.longitude};
         geocoder.geocode({'location': latlng}, function(results, status) {
@@ -111,6 +144,7 @@ export class SigninPage implements OnInit {
   }
 
   validateAddress(){
+    this.updateSearchResults()
     if(this.userData.address.length > 3){
       this.validAddress = 'valid'
     }else{

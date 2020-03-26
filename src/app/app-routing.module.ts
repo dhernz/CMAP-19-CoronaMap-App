@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'symptoms',
     loadChildren: () => import('./symptoms/symptoms.module').then( m => m.SymptomsPageModule)
   },
+  {
+    path: 'pin-map',
+    loadChildren: () => import('./pin-map/pin-map.module').then( m => m.PinMapPageModule)
+  },
 ];
 
 @NgModule({
