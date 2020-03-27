@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="margin-right: 48px;text-align: center;">
+      Iniciar sesion
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img style="height: 40px;margin-top: 20px;" src="assets/icon/LOGO_.svg"></ion-img>
+  <div class="form-container">
+    <div class="label-top-text">
+      Ingresa tu número de identidad para iniciar sesion
+    </div>
+    <div class="element">
+      <div class="title-element">
+        Número de identidad
+      </div>
+      <div class="input-container {{validIdentity}} identity">
+        <input type="text" maxlength="4" pattern="[0-9]*" [(ngModel)]="userData.identityOne" #identityOne placeholder="0101" (input)="validateIdentityOne()">
+        <input type="text" maxlength="4" pattern="[0-9]*"  [(ngModel)]="userData.identityTwo" #identityTwo placeholder="1980" (input)="validateIdentityTwo()">
+        <input type="text" maxlength="5" pattern="[0-9]*" [(ngModel)]="userData.identityThree" #identityThree placeholder="12345" (input)="validateIdentityThree()">
+      </div>
+    </div>
+    <div class="btn-container {{btnEnabled()}}" (click)="processForm()">
+      <div class="btn">
+        INICIAR
+      </div>
+    </div>
+  </div>
+</ion-content>
+

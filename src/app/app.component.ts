@@ -25,6 +25,7 @@ export class AppComponent {
 
   logout(){
     console.log("Logout")
+    this.menu.enable(false,"first")
     localStorage.removeItem("token");
     localStorage.removeItem("statusId");
     localStorage.removeItem("name");
@@ -35,7 +36,7 @@ export class AppComponent {
 
   getStatusColor(){
     let statusId = localStorage.getItem("statusId")
-    if(this.apiService.statusAll.length > 0){
+    if(this.apiService.statusAll.length > 0 && statusId){
       return this.apiService.statusObject[statusId].color
     }else{
       return "blue"
@@ -44,7 +45,7 @@ export class AppComponent {
   
   getStatusText(){
     let statusId = localStorage.getItem("statusId")
-    if(this.apiService.statusAll.length > 0){
+    if(this.apiService.statusAll.length > 0 && statusId){
       return this.apiService.statusObject[statusId].name
     }else{
       return 'cargando'

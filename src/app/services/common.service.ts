@@ -14,6 +14,7 @@ export class CommonService {
   async presentLoading() {
     this.loading = await this.loadingController.create({
       message: 'Espere porfavor...',
+      backdropDismiss:true
     });
     await this.loading.present();
   }

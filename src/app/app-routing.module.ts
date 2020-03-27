@@ -35,6 +35,11 @@ const routes: Routes = [
     path: 'recommendations',
     loadChildren: () => import('./recommendations/recommendations.module').then( m => m.RecommendationsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

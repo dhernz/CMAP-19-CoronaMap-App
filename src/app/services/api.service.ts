@@ -30,9 +30,19 @@ export class ApiService {
 
   register(userData){
     return new Promise((resolve,reject)=>{
-      console.log(this.jsonToParams(userData))
       this.http.post(this.apiUrl+'/user',this.jsonToParams(userData)).subscribe((response:any) => {
-          console.log(response);
+          if(response.error){
+            reject(response.error)
+          }else{
+            resolve(response)
+          }
+      });
+    })
+  }
+
+  signin(identity){
+    return new Promise((resolve,reject)=>{
+      this.http.post(this.apiUrl+'/userSignin',this.jsonToParams(identity)).subscribe((response:any) => {
           if(response.error){
             reject(response.error)
           }else{
@@ -57,7 +67,6 @@ export class ApiService {
   updateReport(reportData){
     return new Promise((resolve,reject)=>{
       this.http.post(this.apiUrl+'/updateReport',this.jsonToParams(reportData),{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {  
-        console.log(response)
         if(response.error){
           reject(response.error)
         }else{
@@ -70,7 +79,6 @@ export class ApiService {
   addSymptoms(symptomId){
     return new Promise((resolve,reject)=>{
       this.http.post(this.apiUrl+'/user/symptom',this.jsonToParams({symptom_id:symptomId}),{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
-        console.log("ADDSYMPROM RESPONSE ",response)  
         if(response.error){
           reject(response.error)
         }else{
@@ -90,7 +98,6 @@ export class ApiService {
             this.statusAll.forEach(status=>{
               this.statusObject[status.id] = status
             })
-            console.log(response)
             resolve(response)
           }
       });

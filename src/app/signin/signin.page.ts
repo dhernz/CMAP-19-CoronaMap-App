@@ -17,7 +17,10 @@ export class SigninPage implements OnInit {
   @ViewChild('identityThree',{static:false}) identityThree: ElementRef
 
   userData: any = {
-    gender:'female'
+    gender:'female',
+    identityOne: '',
+    identityTwo:'',
+    identityThree:''
   }
 
   validName = ''
@@ -109,30 +112,36 @@ export class SigninPage implements OnInit {
   }
 
   validateIdentityOne(){
-    if(this.userData.identityOne.toString().length == 4){
-      this.identityTwo.nativeElement.focus()
+    let identity = this.userData.identityOne.toString() + "-" + this.userData.identityTwo.toString()+ "-" + this.userData.identityThree.toString()
+    if(identity.toString().length == 15){
       this.validIdentity = 'valid'
-    } else {
+    } else if(this.identityOne) {
       this.validIdentity = 'invalid'
     }
+    if(this.userData.identityOne.toString().length == 4)
+      this.identityTwo.nativeElement.focus()
   }
 
   validateIdentityTwo(){
-    if(this.userData.identityTwo.toString().length == 4){
-      this.identityThree.nativeElement.focus()
+    let identity = this.userData.identityOne.toString() + "-" + this.userData.identityTwo.toString()+ "-" + this.userData.identityThree.toString()
+    if(identity.toString().length == 15){
       this.validIdentity = 'valid'
     } else {
       this.validIdentity = 'invalid'
     }
+    if(this.userData.identityTwo.toString().length == 4)
+      this.identityThree.nativeElement.focus()
   }
 
   validateIdentityThree(){
-    if(this.userData.identityThree.toString().length == 5){
-      this.identityThree.nativeElement.focus()
+    let identity = this.userData.identityOne.toString() + "-" + this.userData.identityTwo.toString()+ "-" + this.userData.identityThree.toString()
+    if(identity.toString().length == 15){
       this.validIdentity = 'valid'
     } else {
       this.validIdentity = 'invalid'
     }
+    if(this.userData.identityThree.toString().length == 5)
+      this.identityThree.nativeElement.focus()
   }
 
   validatePhone(){
@@ -183,14 +192,15 @@ export class SigninPage implements OnInit {
         this.apiService.getCurrentReport().then((success:any)=>{
           localStorage.setItem("statusId",success.status_id)
           localStorage.setItem("reportId", success.id)
-          this.router.navigate(['/user-status'])
           this.common.hideLoading()
+          this.router.navigate(['/user-status'])
         }).catch(err=>{
-          this.router.navigate(['/user-status'])
           this.common.hideLoading()
+          this.router.navigate(['/user-status'])
         });
       }).catch(err=>{
         console.log(err)
+        this.common.presentToast(err)
         this.common.hideLoading()
       })
       console.log("Process form")
