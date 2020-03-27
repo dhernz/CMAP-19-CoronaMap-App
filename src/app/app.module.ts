@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { SafePipe } from './safe.pipe';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

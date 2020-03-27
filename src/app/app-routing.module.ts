@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'pin-map',
     loadChildren: () => import('./pin-map/pin-map.module').then( m => m.PinMapPageModule)
   },
+  {
+    path: 'communique',
+    loadChildren: () => import('./communique/communique.module').then( m => m.CommuniquePageModule)
+  },
+  {
+    path: 'recommendations',
+    loadChildren: () => import('./recommendations/recommendations.module').then( m => m.RecommendationsPageModule)
+  },
 ];
 
 @NgModule({
