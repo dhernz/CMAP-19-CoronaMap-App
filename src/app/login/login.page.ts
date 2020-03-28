@@ -68,7 +68,7 @@ export class LoginPage implements OnInit {
   btnEnabled(){
     if(this.validIdentity == 'valid'){
       return 'enabled'
-    }else{
+    }else{      
       return 'disabled'
     }
   }
@@ -102,6 +102,9 @@ export class LoginPage implements OnInit {
       console.log("Process form")
       console.log(data)
 
+    }else{
+      this.validIdentity = 'invalid'
+      this.common.presentToast("Por favor rellena los campos")
     }
   }
 
