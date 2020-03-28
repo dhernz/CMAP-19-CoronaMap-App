@@ -14,12 +14,14 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { SafePipe } from './safe.pipe';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,HttpClientModule , IonicModule.forRoot(), AppRoutingModule],
   providers: [
     Geolocation,
+    GoogleAnalytics,
     NativeGeocoder,
     Device,
     StatusBar,
