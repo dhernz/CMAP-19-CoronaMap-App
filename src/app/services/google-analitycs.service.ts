@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
-declare let ga: Function;
+declare let gtag: Function;
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAnalitycsService {
 
-  constructor() { }
-
-  trackPagesHandler(pagePath){
-    ga('set', 'page', pagePath);
-    ga('send', 'pageview');
+  constructor() { 
+    console.log(gtag)
   }
 
-  trackEventHandler(eventAction, eventLabel, eventCategory) {
+  trackPagesHandler(pagename,pagePath){
+    gtag('config', 'UA-161996333-1', {
+      'page_title' : pagename,
+      'page_path': pagePath
+    });
+  }
+
+  trackEventHandler(action,eventCategory) {
     const eventData = {
-      eventCategory: eventCategory,
-      eventLabel: eventLabel,
-      eventAction: eventAction,
+      event_category: eventCategory,
+      event_label: action,
+      non_interaction: true,
     };
-    ga('send', 'event', eventData);
+    gtag('event', action, eventData);
   }
 }

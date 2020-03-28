@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { CommonService } from '../services/common.service';
 import { Router } from '@angular/router';
+import { GoogleAnalitycsService } from '../services/google-analitycs.service';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +25,11 @@ export class LoginPage implements OnInit {
   validIdentity = ''
   constructor(public apiService: ApiService,
               public common: CommonService,
+              private ga: GoogleAnalitycsService,
               public router: Router) { }
 
   ngOnInit() {
+    this.ga.trackPagesHandler('Login','/login');
   }
 
   validateIdentityOne(){

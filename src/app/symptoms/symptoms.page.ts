@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { CommonService } from '../services/common.service';
 import { Router } from '@angular/router';
+import { GoogleAnalitycsService } from '../services/google-analitycs.service';
 declare var google;
 @Component({
   selector: 'app-symptoms',
@@ -43,11 +44,13 @@ export class SymptomsPage implements OnInit {
     private geolocation: Geolocation,
     private common: CommonService,
     private router: Router,
+    private ga: GoogleAnalitycsService,
     public apiService: ApiService) {
       this.apiService.getAllSymptoms()
     }
 
   ngOnInit() {
+    this.ga.trackPagesHandler('Symptoms','/symptoms');
   }
 
   useCurrentLocation(){

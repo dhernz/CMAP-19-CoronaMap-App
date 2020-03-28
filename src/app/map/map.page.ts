@@ -3,6 +3,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder,NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { ApiService } from '../services/api.service';
 import { MenuController } from '@ionic/angular';
+import { GoogleAnalitycsService } from '../services/google-analitycs.service';
 declare var google;
 @Component({
   selector: 'app-map',
@@ -18,10 +19,12 @@ export class MapPage implements OnInit {
   constructor(private geolocation: Geolocation,
     private menu: MenuController,
     private apiService: ApiService,
+    public ga: GoogleAnalitycsService,
     private nativeGeocoder: NativeGeocoder) { }
 
     ngOnInit() {
       this.loadMap();
+      this.ga.trackPagesHandler('Main Map','/map');
     }
    
 

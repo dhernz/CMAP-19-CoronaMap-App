@@ -4,6 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { CommonService } from '../services/common.service';
+import { GoogleAnalitycsService } from '../services/google-analitycs.service';
 @Component({
   selector: 'app-user-status',
   templateUrl: './user-status.page.html',
@@ -16,6 +17,7 @@ export class UserStatusPage implements OnInit {
   constructor(
     private menu: MenuController,
     private geolocation: Geolocation,
+    private ga: GoogleAnalitycsService,
     private router: Router,
     private common: CommonService,
     private apiService: ApiService) { }
@@ -31,6 +33,7 @@ export class UserStatusPage implements OnInit {
     }else{
       this.statusAll = this.apiService.statusAll
     }
+    this.ga.trackPagesHandler('User Status','/user-status');
   }
 
 

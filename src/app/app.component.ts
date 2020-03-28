@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ApiService } from './services/api.service';
+import { GoogleAnalitycsService } from './services/google-analitycs.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -18,7 +19,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     public menu: MenuController,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    public ga: GoogleAnalitycsService
   ) {
     this.initializeApp();
   }
@@ -62,6 +64,8 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      //this.ga.pageTrackMethod('home');
+      this.ga.trackEventHandler("App Started",'app_flow');
       this.statusBar.styleLightContent()
       this.statusBar.backgroundColorByHexString('#ffffff');
       this.statusBar.styleDefault();

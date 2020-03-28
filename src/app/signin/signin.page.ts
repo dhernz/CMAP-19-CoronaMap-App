@@ -5,6 +5,7 @@ import { CommonService } from '../services/common.service';
 import { Router } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { MenuController } from '@ionic/angular';
+import { GoogleAnalitycsService } from '../services/google-analitycs.service';
 declare var google;
 @Component({
   selector: 'app-signin',
@@ -43,7 +44,8 @@ export class SigninPage implements OnInit {
     private menu: MenuController,
     private common: CommonService,
     private router: Router,
-    private zone: NgZone
+    private zone: NgZone,
+    private ga: GoogleAnalitycsService
   ) { 
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
@@ -55,6 +57,7 @@ export class SigninPage implements OnInit {
       this.userData.address = address
       this.validAddress = 'valid'
     })
+    this.ga.trackPagesHandler('Signup','/signup');
   }
 
   updateSearchResults(){

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ApiService } from '../services/api.service';
+import { GoogleAnalitycsService } from '../services/google-analitycs.service';
 declare var google;
 @Component({
   selector: 'app-pin-map',
@@ -13,11 +14,13 @@ export class PinMapPage implements OnInit {
   fetching = false;
   address = ""
   constructor(private geolocation: Geolocation,
+    private ga: GoogleAnalitycsService,
     public apiService: ApiService) { }
 
   ngOnInit() {
     this.apiService.addressSignup = "Cargando dirección..."
     this.loadMap()
+    this.ga.trackPagesHandler('Pin Map Signup','/pin-map');
   }
 
   loadMap() {
