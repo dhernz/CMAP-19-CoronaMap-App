@@ -55,4 +55,15 @@ export class CommonService {
     this.toast.present();
   }
 
+  async presentToastDown(message) {
+    if(this.toast) this.toast.dismiss()
+    this.toast = await this.toastController.create({
+      message: message,
+      duration: 5000,
+      color: "primary",
+      position: "bottom"
+    });
+    this.toast.present();
+  }
+
 }

@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { Socket } from 'ngx-socket-io';
 import { CommonService } from '../services/common.service';
 import { GoogleAnalitycsService } from '../services/google-analitycs.service';
 @Component({
@@ -19,6 +20,7 @@ export class UserStatusPage implements OnInit {
     private geolocation: Geolocation,
     private ga: GoogleAnalitycsService,
     private router: Router,
+    private socket: Socket,
     private common: CommonService,
     private apiService: ApiService) { }
 
@@ -33,6 +35,12 @@ export class UserStatusPage implements OnInit {
     }else{
       this.statusAll = this.apiService.statusAll
     }
+
+    this.socket.connect();
+    this.socket.fromEvent('new-user').subscribe((data:any) => {
+      if(localStorage.getItem("uid") != data.uid)
+        this.common.presentToastDown(data.message)
+    });
     this.ga.trackPagesHandler('User Status','/user-status');
   }
 
@@ -49,6 +57,10 @@ export class UserStatusPage implements OnInit {
       this.apiService.setReport(reportData).then(success=>{
         console.log(success)
         localStorage.setItem("statusId",statusObj.id)
+        let address = localStorage.getItem("address")
+        let uid = Date.now().toString()
+        localStorage.setItem("uid",uid)
+        this.socket.emit("new-user",{uid,message:`Un usuario en ${address} con estado ${statusObj.name} acaba de registrarse`})
         this.common.hideLoading()
         this.router.navigate([nextPage])
       }).catch(error=>{

@@ -3,7 +3,9 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder,NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { ApiService } from '../services/api.service';
 import { MenuController } from '@ionic/angular';
+import { Socket } from 'ngx-socket-io';
 import { GoogleAnalitycsService } from '../services/google-analitycs.service';
+import { CommonService } from '../services/common.service';
 declare var google;
 @Component({
   selector: 'app-map',
@@ -19,11 +21,21 @@ export class MapPage implements OnInit {
   constructor(private geolocation: Geolocation,
     private menu: MenuController,
     private apiService: ApiService,
+    private socket: Socket,
+    private common: CommonService,
     public ga: GoogleAnalitycsService,
     private nativeGeocoder: NativeGeocoder) { }
 
     ngOnInit() {
       this.loadMap();
+      this.socket.connect();
+      this.socket.on("connect",(e)=>{
+        console.log(e,this.socket)
+      })
+      this.socket.fromEvent('new-user').subscribe((data:any) => {
+        if(localStorage.getItem("uid") != data.uid)
+          this.common.presentToastDown(data.message)
+      });
       this.ga.trackPagesHandler('Main Map','/map');
     }
    
