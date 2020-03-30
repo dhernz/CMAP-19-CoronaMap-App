@@ -129,7 +129,10 @@ export class SymptomsPage implements OnInit {
         this.who_been += w.value
       }
     })
+    let fineStatusObj = this.apiService.statusAll.find(({ code }) => code === "fine")
+    let symptomsStatusObj = this.apiService.statusAll.find(({ code }) => code === "symptoms")
     let updateReport = {
+      status_id: this.noneSymptomsChecked ? fineStatusObj.id : symptomsStatusObj.id,
       sick_days: this.sick_days,
       address: this.address,
       who_been: this.who_been,
