@@ -15,20 +15,32 @@
     <div class="list-symptoms">
       <div class="symptom-item" *ngFor="let symptom of apiService.symptoms">
         <div class="check-symptom">
-          <ion-checkbox [(ngModel)]="symptom.isChecked"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="symptom.isChecked" (ionChange)="setNoneSymptoms(symptom.isChecked)"></ion-checkbox>
         </div>
         <div class="label-symptom" (click)="symptom.isChecked = !symptom.isChecked">
           {{symptom.name}}
         </div>
       </div>
+      <div class="symptom-item">
+        <div class="check-symptom">
+          <ion-checkbox [(ngModel)]="noneSymptomsChecked"  (ionChange)="changeNoneSymptoms()"></ion-checkbox>
+        </div>
+        <div class="label-symptom" (click)="noneSymptomsChecked = !noneSymptomsChecked">
+          Ninguno de los anteriores
+        </div>
+      </div>
     </div>
   </div>
   <div class="element">
-    <div class="label-element">¿Hace cuanto comenzaste a sentirte asi?</div>
-    <div class="input-element">
-      <input type="number" [(ngModel)]="sick_days">
-      <div class="input-right-label">
-        Días
+    <div class="label-element">¿De que condiciones padeces?</div>
+    <div class="list-symptoms">
+      <div class="symptom-item" *ngFor="let condition of apiService.conditions">
+        <div class="check-symptom">
+          <ion-checkbox [(ngModel)]="condition.isChecked"></ion-checkbox>
+        </div>
+        <div class="label-symptom" (click)="condition.isChecked = !condition.isChecked">
+          {{condition.name}}
+        </div>
       </div>
     </div>
   </div>
@@ -57,6 +69,15 @@
             </div>
           </div>          
         </div>
+    </div>
+  </div>
+  <div class="element">
+    <div class="label-element">¿Hace cuanto comenzaste a sentirte asi?</div>
+    <div class="input-element">
+      <input type="number" [(ngModel)]="sick_days">
+      <div class="input-right-label">
+        Días
+      </div>
     </div>
   </div>
   <div class="btn-continue" (click)="save()">

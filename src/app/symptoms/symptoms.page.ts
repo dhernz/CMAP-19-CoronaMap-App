@@ -17,6 +17,7 @@ export class SymptomsPage implements OnInit {
     
   sick_days = 0
   address = ""
+  noneSymptomsChecked = false;
   who_been = ""
   who_been_list = [{
       name: "Familia",
@@ -47,6 +48,7 @@ export class SymptomsPage implements OnInit {
     private ga: GoogleAnalitycsService,
     public apiService: ApiService) {
       this.apiService.getAllSymptoms()
+      this.apiService.getAllConditions()
     }
 
   ngOnInit() {
@@ -84,6 +86,24 @@ export class SymptomsPage implements OnInit {
         });
       });
     })
+  }
+  setNoneSymptoms(val){
+    if(val)
+      this.noneSymptomsChecked = !val
+  }
+  changeNoneSymptoms(){
+    if(this.noneSymptomsChecked){
+      this.apiService.symptoms.forEach(symptom=>{
+        symptom.isChecked = false
+      })
+    }
+  }
+
+  noneSymptoms(){
+    this.apiService.symptoms.forEach(symptom=>{
+      symptom.isChecked = false
+    })
+    this.noneSymptomsChecked = true
   }
 
   save(){

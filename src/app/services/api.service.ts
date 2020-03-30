@@ -14,10 +14,12 @@ export class ApiService {
   statusAll = []
   statusObject = {}
   symptoms = []
+  conditions = []
   addressSignup = ""
   constructor(private http: HttpClient) {
     this.getAllStatus();
     this.getAllSymptoms();
+    this.getAllConditions();
   }
 
   jsonToParams(json): HttpParams{
@@ -116,6 +118,20 @@ export class ApiService {
       });
     })
   }
+
+  getAllConditions(){
+    return new Promise((resolve,reject)=>{
+      this.http.get(this.apiUrl+'/conditions',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+          if(response.error){
+            reject(response.error)
+          }else{
+            this.conditions = response
+            resolve(response)
+          }
+      });
+    })
+  }
+
 
   getCurrentReport(){
     return new Promise((resolve,reject)=>{
