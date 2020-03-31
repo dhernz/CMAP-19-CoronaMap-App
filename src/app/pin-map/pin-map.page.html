@@ -20,6 +20,10 @@
     <div class="title-element">
       {{apiService.addressSignup}}
     </div>
-
+    <button [disabled]="apiService.addressSignup == 'Cargando dirección...'" class="btn-container-signup" routerLink="/signin" routerDierction="backward">
+      <div class="btn">
+        Confrmar ubicación
+      </div>
+    </button>
   </div>
 </ion-footer>

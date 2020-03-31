@@ -20,6 +20,7 @@
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
+        text-align: center;
         line-height: 21px;
         letter-spacing: -0.47px;
         color: #333333;
@@ -115,5 +116,27 @@
         input{
             width: 30%;
         }
+    }
+}
+
+.btn-container-signup{
+    background: #00B1FA;
+    border-radius: 30px;
+    height: 40px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    border: 0;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    .btn{
+        width: 100%;
+        text-align: center;
     }
 }
