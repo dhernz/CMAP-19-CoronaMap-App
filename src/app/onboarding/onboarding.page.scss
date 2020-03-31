@@ -1,0 +1,56 @@
+ion-slides{
+    height: 100%;
+}
+
+.slide-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .title-container{
+        margin: 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .text{
+            font-family: Rubik;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 26px;
+            letter-spacing: -0.47px;
+            text-align: left;
+            color: #333333;
+        }
+        .icons{
+            width: 64px;
+            font-family: Rubik;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            text-align: center;
+            letter-spacing: -0.47px;
+
+            color: #000000;
+
+        }
+    }
+    .description{
+        margin-left: 48px;
+        margin-right: 48px;
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 163.2%;
+        /* or 24px */
+
+        text-align: justify;
+        letter-spacing: -0.47px;
+
+        color: #000000;
+
+    }
+}
