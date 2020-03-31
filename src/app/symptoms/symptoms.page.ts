@@ -115,7 +115,7 @@ export class SymptomsPage implements OnInit {
         symptomsChecked++
       }
     })
-    if(symptomsChecked == 0){
+    if(symptomsChecked == 0 && !this.noneSymptomsChecked){
       this.common.presentToast("Seleccione al menos un sintoma")
       return false
     }
@@ -142,6 +142,7 @@ export class SymptomsPage implements OnInit {
     
     this.apiService.updateReport(updateReport).then(success=>{
       console.log(success)
+      localStorage.setItem("statusId",updateReport.status_id)
       this.router.navigateByUrl("/map")
     }).catch(err=>{
       console.log("updatereporterror ==> ",err)
