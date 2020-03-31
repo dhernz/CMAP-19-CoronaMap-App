@@ -1,9 +1,11 @@
 {
-  "theme_color": "#00B1FA",
-  "background_color": "#ffffff",
-  "display": "browser",
-  "Scope": "/",
+  "name": "Corona Map",
+  "short_name": "Corona Map",
+  "description": "Mira en tiempo real cual es el status de los que te rodean en relación al COVID-19. ",
+  "lang": "es",
   "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
