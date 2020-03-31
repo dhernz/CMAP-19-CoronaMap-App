@@ -1,5 +1,21 @@
 ion-slides{
     height: 100%;
+    .skip{
+        position: fixed;
+        top: 10px;
+        right: 20px;
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 163.2%;
+        /* or 24px */
+
+        text-align: justify;
+        letter-spacing: -0.47px;
+
+        color: #737070;
+    }
 }
 
 .slide-container{

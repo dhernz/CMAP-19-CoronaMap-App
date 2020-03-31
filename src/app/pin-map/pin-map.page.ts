@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ApiService } from '../services/api.service';
 import { GoogleAnalitycsService } from '../services/google-analitycs.service';
+import { CommonService } from '../services/common.service';
 declare var google;
 @Component({
   selector: 'app-pin-map',
@@ -14,6 +15,7 @@ export class PinMapPage implements OnInit {
   fetching = false;
   address = ""
   constructor(private geolocation: Geolocation,
+    private common: CommonService,
     private ga: GoogleAnalitycsService,
     public apiService: ApiService) { }
 
@@ -52,6 +54,7 @@ export class PinMapPage implements OnInit {
       });
  
     }).catch((error) => {
+      this.common.presentToast("No se pudo obtener su ubicación, por favor verifique si esta activo.")
       console.log('Error getting location', error);
     });
   }

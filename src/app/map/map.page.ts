@@ -66,6 +66,7 @@ export class MapPage implements OnInit {
         });
    
       }).catch((error) => {
+        this.common.presentToast("No se pudo obtener su ubicación, por favor verifique si esta activo.")
         console.log('Error getting location', error);
       });
     }
