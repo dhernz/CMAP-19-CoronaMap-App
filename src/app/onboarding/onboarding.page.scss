@@ -55,4 +55,29 @@ ion-slides{
     }
 }
 
+
+.btn-container-login{
+    border: 1px solid #00B1FA;
+    border-radius: 30px;
+    height: 49px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+    margin-top: 40px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #00B1FA;
+    .btn{
+        width: 100%;
+        text-align: center;
+    }
+}
+
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
