@@ -157,7 +157,7 @@ export class SigninPage implements OnInit {
 
   validateAddress(){
     this.updateSearchResults()
-    if(this.userData.address.length > 3){
+    if(this.apiService.addressSignup.length > 3){
       this.validAddress = 'valid'
     }else{
       this.validAddress = 'invalid'
@@ -165,6 +165,7 @@ export class SigninPage implements OnInit {
   }
 
   btnEnabled(){
+    
     if(this.validPhone == 'valid' &&
     this.validIdentity == 'valid' &&
     this.validName == 'valid' &&
@@ -176,6 +177,7 @@ export class SigninPage implements OnInit {
   }
 
   processForm(){
+    this.validateAddress()
     if(this.btnEnabled() == 'enabled'){
       console.log(this.device)
       let data = {
