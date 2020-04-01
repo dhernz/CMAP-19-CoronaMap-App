@@ -36,6 +36,10 @@ export class AppComponent {
     this.router.navigate(["/"])
   }
 
+  loggedIn(){    
+    return localStorage.getItem("token")
+  }
+
   getStatusColor(){
     let statusId = localStorage.getItem("statusId")
     if(this.apiService.statusAll.length > 0 && statusId){

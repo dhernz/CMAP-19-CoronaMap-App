@@ -3,13 +3,21 @@
     <ion-content>
       <ion-img style="height: 40px;margin: 40px;" src="assets/icon/LOGO_.svg"></ion-img>
       <div class="menu-container">
-        <div class="user-info">
+        <div class="user-info" *ngIf="loggedIn()">
           <div class="user-name">{{getName()}}</div>
           <div class="user-identity">{{getIdentity()}}</div>
           <div class="user-status {{getStatusColor()}}" button routerLink="/user-status"  (click)="menu.close('first')">
             <div class="user-status-text">{{getStatusText()}}</div>
           </div>
         </div>
+        <div class="user-info" *ngIf="!loggedIn()">
+          <div class="btn-container" routerLink="/login" (click)="menu.close('first')">
+            <div class="btn">
+              REGISTRARSE
+            </div>
+          </div>
+        </div>
+        
         <div class="menu-list">
           <div class="menu-item" button routerLink="/user-status" (click)="menu.close('first')">
             Reportar
@@ -22,7 +30,7 @@
           </div>
           <div class="menu-item" button routerLink="/communique" (click)="menu.close('first')">
             Comunicados          </div>
-          <div class="menu-item" button (click)="logout()">
+          <div class="menu-item" button (click)="logout()" *ngIf="loggedIn()">
             Cerrar sesion
           </div>
           

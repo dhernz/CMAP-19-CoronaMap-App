@@ -13,16 +13,10 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log(next.url[0].path)
-    if(next.url[0].path == "signin" || next.url[0].path == "login" || next.url[0].path == "onboarding"){
-      if (localStorage.getItem("token") != null && localStorage.getItem("token") != "") {
-        if(localStorage.getItem("statusId") != null){
-          this.router.navigate(['/map']);
-        }else{
-          this.router.navigate(['/user-status']);
-        }
-      } else {
+    if(next.url[0].path == "signin" || next.url[0].path == "login" || next.url[0].path == "onboarding" || next.url[0].path == "map"){
+      
         return true;
-      }
+      
     }else{
       if (localStorage.getItem("token") != null && localStorage.getItem("token") != "") {
         return true;

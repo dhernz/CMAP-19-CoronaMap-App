@@ -1,6 +1,7 @@
 .menu-container{
     padding-left: 30px;
     .user-info{
+        padding-right: 30px;
         display: flex;
         flex-direction: column;
         .user-name{
@@ -75,5 +76,25 @@
             padding-bottom: 15px;
             color: #010101;
         }
+    }
+}
+
+.btn-container{
+    background: #00B1FA;
+    border-radius: 30px;
+    height: 40px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    border: 0;
+    margin: 10px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    .btn{
+        width: 1100%;
+        text-align: center;
     }
 }
