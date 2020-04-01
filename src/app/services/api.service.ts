@@ -92,7 +92,7 @@ export class ApiService {
 
   getAllStatus(){
     return new Promise((resolve,reject)=>{
-      this.http.get(this.apiUrl+'/status',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+      this.http.get(this.apiUrl+'/status',{ }).subscribe((response:any) => {
           if(response.error){
             reject(response.error)
           }else{
@@ -108,7 +108,7 @@ export class ApiService {
 
   getAllSymptoms(){
     return new Promise((resolve,reject)=>{
-      this.http.get(this.apiUrl+'/symptoms',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+      this.http.get(this.apiUrl+'/symptoms',{  }).subscribe((response:any) => {
           if(response.error){
             reject(response.error)
           }else{
@@ -121,7 +121,7 @@ export class ApiService {
 
   getAllConditions(){
     return new Promise((resolve,reject)=>{
-      this.http.get(this.apiUrl+'/conditions',{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+      this.http.get(this.apiUrl+'/conditions',{  }).subscribe((response:any) => {
           if(response.error){
             reject(response.error)
           }else{
@@ -147,7 +147,7 @@ export class ApiService {
 
   getReportsByLatLng(latitude,longitude){
     return new Promise((resolve,reject)=>{
-      this.http.get(this.apiUrl+'/report/'+latitude+"/"+longitude,{ headers: {authorization: localStorage.getItem("token")} }).subscribe((response:any) => {
+      this.http.get(this.apiUrl+'/report/'+latitude+"/"+longitude,{}).subscribe((response:any) => {
         if(response.error){
           reject(response.error)
         }else{

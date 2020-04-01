@@ -73,7 +73,6 @@ export class MapPage implements OnInit {
    
     getAddressFromCoords(lattitude, longitude) {
       this.apiService.getReportsByLatLng(lattitude,longitude).then((reports:Array<any>)=>{
-        console.log(reports)
         Object.keys(this.markerList).forEach(key=>{
           this.markerList[key].setMap(null)
         });
